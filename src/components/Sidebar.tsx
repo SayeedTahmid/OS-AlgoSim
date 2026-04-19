@@ -11,22 +11,30 @@ interface SidebarItem {
 interface SidebarProps {
   items: SidebarItem[];
   className?: string;
+  isOpen?: boolean;
+  onClose?: () => void;
 }
 
-export const Sidebar: React.FC<SidebarProps> = ({ items, className = '' }) => {
+export const Sidebar: React.FC<SidebarProps> = ({ items, className = '', isOpen = false, onClose }) => {
   const location = useLocation();
 
   return (
-    <aside
-      className={`fixed left-0 top-0 h-screen w-64 bg-gradient-to-b from-gray-950 to-black border-r border-white/10 pt-8 sidebar-scroll ${className}`}
-    >
-      <div className="px-6 mb-12">
-        <h1 className="text-2xl font-bold text-white flex items-center gap-2">
-          <span className="text-primary text-3xl">⚙️</span>
-          OS Simulator
-        </h1>
-        <p className="text-xs text-gray-400 mt-2">Algorithm Analyzer</p>
-      </div>
+    <>
+      <div
+        className={`fixed inset-0 z-40 bg-black/50 transition-opacity duration-300 md:hidden ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+        onClick={onClose}
+      />
+
+      <aside
+        className={`fixed inset-y-0 left-0 z-50 w-72 max-w-full transform overflow-y-auto bg-gradient-to-b from-gray-950 to-black border-r border-white/10 pt-8 transition-transform duration-300 md:w-[280px] md:translate-x-0 ${isOpen ? 'translate-x-0' : '-translate-x-full'} ${className}`}
+      >
+        <div className="px-6 mb-12">
+          <h1 className="text-2xl font-bold text-white flex items-center gap-2">
+            <span className="text-primary text-3xl">⚙️</span>
+            OS Simulator
+          </h1>
+          <p className="text-xs text-gray-400 mt-2">Algorithm Analyzer</p>
+        </div>
 
       <nav className="space-y-2 px-4">
         {items.map((item) => {
@@ -36,6 +44,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, className = '' }) => {
             <Link
               key={item.path}
               to={item.path}
+              onClick={onClose}
               className={`
                 flex items-center gap-3 px-4 py-3 rounded-lg
                 transition-all duration-200
@@ -61,5 +70,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, className = '' }) => {
         </Card>
       </div>
     </aside>
+    </>
   );
 };
