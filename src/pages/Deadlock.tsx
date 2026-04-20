@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Layout } from '../components/Layout';
 import { Card } from '../components/Card';
 import { Button } from '../components/Button';
@@ -146,14 +146,14 @@ const Deadlock: React.FC = () => {
               type="number"
               label="Number of Processes"
               value={numProcesses}
-              onChange={(e) => setNumProcesses(Number(e.target.value))}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNumProcesses(Number(e.target.value))}
               min="1"
             />
             <Input
               type="number"
               label="Number of Resources"
               value={numResources}
-              onChange={(e) => setNumResources(Number(e.target.value))}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNumResources(Number(e.target.value))}
               min="1"
             />
           </div>

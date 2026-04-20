@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { CPUMetrics } from '../../types';
 import { Card } from '../Card';
 import { formatNumber } from '../../utils';

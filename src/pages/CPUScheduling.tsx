@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Layout } from '../components/Layout';
 import { Card } from '../components/Card';
 import { Button } from '../components/Button';
@@ -92,7 +92,7 @@ const CPUScheduling: React.FC = () => {
               </label>
               <select
                 value={selectedAlgorithm}
-                onChange={(e) => setSelectedAlgorithm(e.target.value as AlgorithmType)}
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setSelectedAlgorithm(e.target.value as AlgorithmType)}
                 className="w-full px-3 py-2 rounded-lg bg-gray-800 border border-gray-700 text-gray-100 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
               >
                 {algorithms.map((algo) => (
@@ -108,7 +108,7 @@ const CPUScheduling: React.FC = () => {
                 type="number"
                 label="Time Quantum"
                 value={timeQuantum}
-                onChange={(e) => setTimeQuantum(Number(e.target.value))}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTimeQuantum(Number(e.target.value))}
                 min="1"
               />
             )}

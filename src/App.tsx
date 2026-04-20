@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Dashboard from './pages/Dashboard';
-import CPUScheduling from './pages/CPUScheduling';
-import MemoryManagement from './pages/MemoryManagement';
-import Deadlock from './pages/Deadlock';
-import PerformanceAnalyzer from './pages/PerformanceAnalyzer';
-import About from './pages/About';
+import Dashboard from './pages/Dashboard.tsx';
+import CPUScheduling from './pages/CPUScheduling.tsx';
+import MemoryManagement from './pages/MemoryManagement.tsx';
+import Deadlock from './pages/Deadlock.tsx';
+import PerformanceAnalyzer from './pages/PerformanceAnalyzer.tsx';
+import About from './pages/About.tsx';
 
 function App() {
   return (

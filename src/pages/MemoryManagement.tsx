@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Layout } from '../components/Layout';
 import { Card } from '../components/Card';
 import { Button } from '../components/Button';
@@ -143,13 +143,13 @@ const MemoryManagement: React.FC = () => {
                 <Input
                   label="Memory Block Sizes (comma-separated)"
                   value={blockSizes.join(', ')}
-                  onChange={(e) => handleBlockSizesChange(e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleBlockSizesChange(e.target.value)}
                   placeholder="e.g., 100, 500, 200"
                 />
                 <Input
                   label="Process Sizes (comma-separated)"
                   value={processSizes.join(', ')}
-                  onChange={(e) => handleProcessSizesChange(e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleProcessSizesChange(e.target.value)}
                   placeholder="e.g., 212, 417, 112"
                 />
               </div>
@@ -263,7 +263,7 @@ const MemoryManagement: React.FC = () => {
                   type="number"
                   label="Number of Frames"
                   value={numFrames}
-                  onChange={(e) => setNumFrames(Number(e.target.value))}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNumFrames(Number(e.target.value))}
                   min="1"
                 />
               </div>
@@ -272,7 +272,7 @@ const MemoryManagement: React.FC = () => {
                 <Input
                   label="Reference String (comma-separated)"
                   value={referenceString.join(', ')}
-                  onChange={(e) => handleReferenceStringChange(e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleReferenceStringChange(e.target.value)}
                   placeholder="e.g., 7, 0, 1, 2, 0, 3"
                 />
               </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { ScheduleResult } from '../../types';
 import { getProcessColor } from '../../utils';
 import { Card } from '../Card';
