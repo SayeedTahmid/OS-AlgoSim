@@ -217,7 +217,8 @@ const About: React.FC = () => {
         {/* Footer */}
         <div className="text-center pt-8 border-t border-white/10">
           <p className="text-gray-500 text-sm">
-            © 2024 Interactive OS Algorithm Simulator. Built with ❤️ for education.
+            © 2026 Interactive OS Algorithm Simulator.
+            Developed by <a href="https://github.com/SayeedTahmid" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Syed Tahmid Manzoor</a> 
           </p>
         </div>
       </div>
