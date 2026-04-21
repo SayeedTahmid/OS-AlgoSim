@@ -111,10 +111,10 @@ const PerformanceAnalyzer: React.FC = () => {
       const result = algorithmMap[key](processes);
       const metrics = Object.values(result.metrics);
       const avgRT = metrics.length > 0 
-        ? metrics.reduce((sum, m) => sum + m.responseTime, 0) / metrics.length
+        ? metrics.reduce((sum: number, m: any) => sum + m.responseTime, 0) / metrics.length
         : 0;
       const avgCT = metrics.length > 0
-        ? metrics.reduce((sum, m) => sum + m.completionTime, 0) / metrics.length
+        ? metrics.reduce((sum: number, m: any ) => sum + m.completionTime, 0) / metrics.length
         : 0;
       
       return {
