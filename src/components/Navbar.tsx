@@ -12,10 +12,10 @@ export const Navbar: React.FC<NavbarProps> = ({
   className = ''
 }) => {
   return (
-    <div className={`ml-64 border-b border-white/10 backdrop-blur-sm bg-black/30 sticky top-0 z-40 ${className}`}>
-      <div className="px-8 py-6">
-        <h2 className="text-3xl font-bold text-white">{title}</h2>
-        {subtitle && <p className="text-gray-400 text-sm mt-1">{subtitle}</p>}
+    <div className={`md:ml-0 border-b border-white/10 backdrop-blur-sm bg-black/30 sticky top-0 z-40 w-full ${className}`}>
+      <div className="px-3 py-3 md:px-8 md:py-6 w-full overflow-hidden">
+        <h2 className="text-lg md:text-3xl font-bold text-white truncate break-words">{title}</h2>
+        {subtitle && <p className="text-gray-400 text-xs md:text-sm mt-1 truncate">{subtitle}</p>}
       </div>
     </div>
   );

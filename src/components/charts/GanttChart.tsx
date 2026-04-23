@@ -14,66 +14,67 @@ export const GanttChart: React.FC<GanttChartProps> = ({ schedule, className = ''
   }
 
   const maxTime = Math.max(...schedule.map(s => s.endTime));
-  const scale = 400 / maxTime;
+  const minChartWidth = Math.max(400, maxTime * 40);
 
   return (
-    <Card className={`p-6 ${className}`}>
-      <h3 className="text-lg font-semibold text-white mb-6">Gantt Chart</h3>
-      
-      <div className="space-y-6">
-        {/* Timeline */}
-        <div className="pl-24">
-          <div
-            className="relative h-12 bg-gray-800/50 rounded-lg border border-gray-700 overflow-hidden"
-            style={{ width: '100%' }}
-          >
-            {/* Process blocks */}
-            {schedule.map((item, idx) => (
-              <div
-                key={idx}
-                className="absolute h-full flex items-center justify-center text-white font-semibold text-sm"
-                style={{
-                  backgroundColor: getProcessColor(item.processId),
-                  left: `${(item.startTime * scale)}px`,
-                  width: `${((item.endTime - item.startTime) * scale)}px`,
-                  opacity: 0.85
-                }}
-              >
-                {item.processId}
-              </div>
-            ))}
+    <Card className={`p-4 md:p-6 ${className}`}>
+      <h3 className="text-lg font-semibold text-white mb-4 md:mb-6">Gantt Chart</h3>
 
-            {/* Timeline labels */}
-            <div className="absolute bottom-0 left-0 right-0 h-6 border-t border-gray-600 flex bg-gray-900/50">
-              {Array.from({ length: Math.floor(maxTime) + 1 }).map((_, i) => (
+      <div className="space-y-4">
+        {/* Scrollable Timeline */}
+        <div className="w-full overflow-x-auto rounded-lg">
+          <div style={{ minWidth: `${minChartWidth}px` }}>
+            <div
+              className="relative h-12 bg-gray-800/50 rounded-lg border border-gray-700 overflow-hidden"
+            >
+              {/* Process blocks */}
+              {schedule.map((item, idx) => (
                 <div
-                  key={i}
-                  className="border-r border-gray-700 text-xs text-gray-500 flex items-center justify-start px-1"
-                  style={{ width: `${scale}px` }}
+                  key={idx}
+                  className="absolute h-full flex items-center justify-center text-white font-semibold text-xs md:text-sm"
+                  style={{
+                    backgroundColor: getProcessColor(item.processId),
+                    left: `${(item.startTime / maxTime) * 100}%`,
+                    width: `${((item.endTime - item.startTime) / maxTime) * 100}%`,
+                    opacity: 0.85
+                  }}
                 >
-                  {i}
+                  {item.processId}
                 </div>
               ))}
+
+              {/* Timeline labels */}
+              <div className="absolute bottom-0 left-0 right-0 h-6 border-t border-gray-600 flex bg-gray-900/50">
+                {Array.from({ length: Math.floor(maxTime) + 1 }).map((_, i) => (
+                  <div
+                    key={i}
+                    className="border-r border-gray-700 text-xs text-gray-500 flex items-center justify-start px-1 flex-shrink-0"
+                    style={{ width: `${100 / maxTime}%` }}
+                  >
+                    {i}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
 
         {/* Time axis label */}
-        <div className="text-right text-xs text-gray-500 pr-4">
+        <div className="text-right text-xs text-gray-500">
           Time → {maxTime}
         </div>
 
         {/* Legend */}
-        <div className="pt-4 border-t border-gray-700">
+        <div className="pt-3 border-t border-gray-700">
           <p className="text-xs font-semibold text-gray-400 mb-3">Process Legend</p>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-2">
             {[...new Set(schedule.map(s => s.processId))].map(processId => (
               <div key={processId} className="flex items-center gap-2">
                 <div
-                  className="w-4 h-4 rounded"
+                  className="w-3 h-3 md:w-4 md:h-4 rounded flex-shrink-0"
                   style={{ backgroundColor: getProcessColor(processId) }}
                 />
-                <span className="text-sm text-gray-400">{processId}</span>
+                <span className="text-xs md:text-sm text-gray-400">{processId}</span>
               </div>
             ))}
           </div>
