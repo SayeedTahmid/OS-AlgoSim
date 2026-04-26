@@ -26,10 +26,15 @@ A modern, interactive web application for simulating and analyzing Operating Sys
 - **Need Matrix**: Automatic calculation of resource needs
 
 ### Performance Analyzer
-- **Algorithm Comparison**: Compare all CPU scheduling algorithms
-- **Visual Charts**: Bar and line charts for metrics
-- **Efficiency Scoring**: See which algorithm performs best
-- **Recommendations**: Get suggestions based on your data
+- **Interactive Process Input**: Editable table to add, delete, reset, or load custom processes (PID auto-generates, with validation for arrival time ≥ 0, burst time > 0, priority ≥ 0)
+- **Algorithm Comparison**: Select and compare up to 6 CPU scheduling algorithms (FCFS, SJF Non-Preemptive, SJF Preemptive, Priority Non-Preemptive, Priority Preemptive, Round Robin) with checkboxes; defaults to FCFS, SJF Non-Preemptive, and Round Robin
+- **Time Quantum Control**: Adjustable input for Round Robin, shown only when selected
+- **Detailed Metrics**: Calculate and display Average Waiting Time, Average Turnaround Time, Average Response Time, and Average Completion Time for each algorithm
+- **Visual Charts**: Bar chart for Avg WT and Avg TAT; line chart for Avg Response Time using Recharts
+- **Summary Cards**: Highlight best algorithms for Avg WT, Avg TAT, Fastest Completion, and Best Response Time
+- **Metrics Table**: Tabular view of all metrics per algorithm
+- **Recommendations**: Auto-generated suggestions based on lowest Avg WT, with simple explanations (e.g., "SJF gives the lowest waiting time for this workload")
+- **Premium UI**: Dark glass-morphism theme with responsive design (desktop: 2-column cards/charts; mobile: stacked), large readable typography, and modern hover effects
 
 ## 🚀 Quick Start
 
@@ -41,6 +46,7 @@ A modern, interactive web application for simulating and analyzing Operating Sys
 git clone <repository-url>
 cd OS-Project
 npm install
+
 ```
 
 ### Run Development Server
@@ -115,13 +121,18 @@ src/
 │   └── deadlock/        # Deadlock algorithms
 ├── components/          # Reusable React components
 │   ├── charts/          # Chart and visualization components
-│   └── *.tsx            # UI components (Button, Card, Input, etc.)
+│   ├── ProcessInputTable.tsx  # Editable process input table
+│   ├── AlgorithmSelector.tsx  # Algorithm selection with checkboxes
+│   ├── SummaryCards.tsx       # Best algorithm summary cards
+│   ├── ComparisonCharts.tsx   # Bar and line charts for metrics
+│   ├── MetricsTable.tsx       # Tabular metrics display
+│   └── *.tsx                  # Other UI components (Button, Card, Input, etc.)
 ├── pages/               # Application pages
 │   ├── Dashboard.tsx
 │   ├── CPUScheduling.tsx
 │   ├── MemoryManagement.tsx
 │   ├── Deadlock.tsx
-│   ├── PerformanceAnalyzer.tsx
+│   ├── PerformanceAnalyzer.tsx  # Redesigned interactive analyzer
 │   └── About.tsx
 ├── types/               # TypeScript type definitions
 ├── utils/               # Utility functions
@@ -254,4 +265,4 @@ Built as an educational tool for Operating System algorithm learning and visuali
 ---
 
 **Last Updated**: April 2026  
-**Version**: 1.0.0
+**Version**: 2.0.0
