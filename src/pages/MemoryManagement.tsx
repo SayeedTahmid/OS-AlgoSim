@@ -183,9 +183,9 @@ const MemoryManagement: React.FC = () => {
                       <tbody>
                         {allocationResults.blocks.map((block) => (
                           <tr key={block.id} className="border-b border-white/5 hover:bg-white/5">
-                            <td className="px-4 py-3">{block.id}</td>
-                            <td className="px-4 py-3">{block.size}</td>
-                            <td className="px-4 py-3">{block.processId || '-'}</td>
+                            <td className="px-4 py-3 text-white-200">{block.id}</td>
+                            <td className="px-4 py-3 text-white-200">{block.size}</td>
+                            <td className="px-4 py-3 text-white-200">{block.processId || '-'}</td>
                             <td className="px-4 py-3">
                               <span
                                 className={`px-3 py-1 rounded text-xs font-semibold ${
