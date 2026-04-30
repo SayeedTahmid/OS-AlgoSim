@@ -4,7 +4,7 @@ export const memoryAlgorithms = {
   // First Fit - Memory Allocation
   firstFit: (blockSizes: number[], processSizes: number[]): MemoryAllocationResult => {
     const blocks: MemoryBlock[] = blockSizes.map((size, i) => ({
-      id: `block-${i}`,
+      id: (i + 1).toString(),
       size,
       allocated: false
     }));
@@ -38,7 +38,7 @@ export const memoryAlgorithms = {
   // Best Fit - Memory Allocation
   bestFit: (blockSizes: number[], processSizes: number[]): MemoryAllocationResult => {
     const blocks: MemoryBlock[] = blockSizes.map((size, i) => ({
-      id: `block-${i}`,
+      id: (i + 1).toString(),
       size,
       allocated: false
     }));
