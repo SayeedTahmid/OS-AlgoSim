@@ -42,7 +42,7 @@ const Dashboard: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <StatCard
             title="Total Algorithms"
-            value="14"
+            value="12"
             icon="🧮"
             color="blue"
           />
@@ -60,7 +60,7 @@ const Dashboard: React.FC = () => {
           />
           <StatCard
             title="Deadlock Algorithms"
-            value="4"
+            value="2"
             icon="🔗"
             color="orange"
           />
